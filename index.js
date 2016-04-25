@@ -1,15 +1,13 @@
-import 'babel-polyfill'
-import 'todomvc-app-css/index.css'
-import React from 'react'
-import { render } from 'react-dom'
-import App from './containers/App'
-import { Provider } from 'react-redux'
-import { configureStore } from './store/configureStore'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, useRouterHistory } from 'react-router';
+import createHashHistory from 'history/lib/createHashHistory';
 
-const store = configureStore();
-render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById('root')
-)
+
+import Home from './components/layout/home';
+
+ReactDOM.render((
+  <Router history={useRouterHistory(createHashHistory)({ queryKey: false })}>
+    <Route path="/" component={Home} />
+  </Router>
+), document.getElementById('root'));
