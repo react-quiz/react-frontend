@@ -3,6 +3,10 @@ import { Link } from 'react-router';
 import { Button } from 'react-toolbox/button';
 import Navigation from '../../navigation';
 import style from './style';
+import { Layout, NavDrawer, AppBar, Panel, IconButton, Checkbox } from 'react-toolbox';
+import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/list';
+
+var _style = require('./style');
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -16,31 +20,53 @@ const TwitterIcon = () => (
   </svg>
 );
 
+class Home extends React.Component {
+    state = {
+        drawerActive: false,
+        drawerPinned: false
+    };
 
-const Home = () => (
-  <article>
-    <header className={style.header}>
-      <h2 className={style.title}>React Toolbox</h2>
-      <h4 className={style.subtitle}>Bootstrap your application with beautiful Material Design Components</h4>
-      <Navigation className={style.navigation} />
-    </header>
+    toggleDrawerActive = () => {
+        this.setState({ drawerActive: !this.state.drawerActive });
+    };
 
-    <section className={style.content}>
-      <p>
-        React Toolbox is a set of React components that implements Google Material Design specification.
-        It's built on top of some the trendiest proposals like CSS Modules (written in SASS), Webpack and ES6.
-        The library harmoniously integrates with your Webpack workflow and it's easily customizable and very flexible.
-      </p>
-      <Link to='/components'>
-        <Button label='Try it now!' raised accent />
-      </Link>
-    </section>
+    toggleDrawerPinned = () => {
+        this.setState({ drawerPinned: !this.state.drawerPinned });
+    }
 
-    <footer className={style.footer}>
-      <p>React Toolbox © 2016</p>
-      <small>Crafted with <span className={style.love}>ღ</span> between Spain and Thailand</small>
-    </footer>
-  </article>
-);
+    render() {
+        return (
+            <Layout className={_style.mainLayout}>
+                <NavDrawer
+                    pinned={this.state.drawerPinned}
+                    permanentAt='xxxl'
+                    scrollY={true}>
+                    <List selectable ripple>
+                      <ListSubHeader caption='Quiz Actions' />
+                      <ListItem
+                        caption='Dr. Manhattan'
+                        leftIcon='add'
+                      />
+                      <ListItem
+                        caption='Ozymandias'
+                        leftIcon='list'
+                      />
+                      <ListDivider />
+                      <ListItem caption='Sign Out' leftIcon='cancel' />
+                    </List>
+                </NavDrawer>
+
+                <Panel>
+                    <AppBar><IconButton icon='menu' inverse={ true } onClick={ this.toggleDrawerPinned }/></AppBar>
+                    <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem' }}>
+                        <h1>List All Quiz</h1>
+                        <p>Main content goes here.</p>
+                        
+                    </div>
+                </Panel>
+            </Layout>
+        );
+    }
+}
 
 export default Home;

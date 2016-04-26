@@ -5,6 +5,11 @@ $twitter-color: #55acee;
 $content-offset: 4.8 * $unit;
 $content-width: 740px;
 
+.mainLayout {
+  position: inherit !important;
+  padding: 10px;
+}
+
 .header {
   padding: 0 calc((100% - #{$hero-max-width}) / 2);
   color: $hero-text-color;
