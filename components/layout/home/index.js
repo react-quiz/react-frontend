@@ -5,6 +5,7 @@ import Navigation from '../../navigation';
 import style from './style';
 import { Layout, NavDrawer, AppBar, Panel, IconButton, Checkbox } from 'react-toolbox';
 import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/list';
+import { QuizForm, QuizList } from '../../quiz'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -61,7 +62,8 @@ class Home extends React.Component {
                     <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem', minHeight: '100vh' }}>
                         <h1>List All Quiz</h1>
                         <p>Main content goes here.</p>
-
+                        <QuizForm/>
+                        <QuizList/>
                     </div>
                 </Panel>
             </Layout>
