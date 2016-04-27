@@ -7,5 +7,5 @@ $ npm install
 ```
 2. Run application
 ```sh
-npm start
+$ npm start
 ```
