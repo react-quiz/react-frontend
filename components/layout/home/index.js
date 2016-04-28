@@ -6,6 +6,9 @@ import style from './style';
 import { Layout, NavDrawer, AppBar, Panel, IconButton, Checkbox } from 'react-toolbox';
 import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/list';
 import { QuizForm, QuizList } from '../../quiz'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as QuizActions from '../../../actions/quiz-actions'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -35,40 +38,64 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Layout>
-                <NavDrawer
-                    active={this.state.drawerActive}
-                    pinned={this.state.drawerPinned}
-                    permanentAt='xxxl'
-                    scrollY={true}
-                    onOverlayClick={ this.toggleDrawerActive }>
-                    <List selectable ripple>
-                      <ListSubHeader caption='Quiz Actions' />
-                      <ListItem
-                        caption='Dr. Manhattan'
-                        leftIcon='add'
-                      />
-                      <ListItem
-                        caption='Ozymandias'
-                        leftIcon='list'
-                      />
-                      <ListDivider />
-                      <ListItem caption='Sign Out' leftIcon='cancel' />
-                    </List>
-                </NavDrawer>
+          <Layout>
+            <NavDrawer
+              active={this.state.drawerActive}
+              pinned={this.state.drawerPinned}
+              permanentAt='xxxl'
+              scrollY={true}
+              onOverlayClick={ this.toggleDrawerActive }>
+              <List selectable ripple>
+                <ListSubHeader caption='Quiz Actions' />
+                <ListItem
+                  caption='Dr. Manhattan'
+                  leftIcon='add'
+                  />
+                <ListItem
+                  caption='Ozymandias'
+                  leftIcon='list'
+                  />
+                <ListDivider />
+                <ListItem caption='Sign Out' leftIcon='cancel' />
+              </List>
+            </NavDrawer>
 
-                <Panel>
-                    <AppBar><IconButton icon='menu' inverse={ true } onClick={ this.toggleDrawerActive }/></AppBar>
-                    <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem', minHeight: '100vh' }}>
-                        <h1>List All Quiz</h1>
-                        <p>Main content goes here.</p>
-                        <QuizForm/>
-                        <QuizList/>
-                    </div>
-                </Panel>
-            </Layout>
+            <Panel>
+              <AppBar>
+                <IconButton
+                  icon='menu'
+                  inverse={ true }
+                  onClick={ this.toggleDrawerActive }/>
+              </AppBar>
+              <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem', minHeight: '100vh' }}>
+                <h1>
+                  List All Quiz
+                </h1>
+                <p>
+                  Main content goes here.
+                </p>
+                <QuizForm/>
+                <QuizList data={this.props.quiz}/>
+              </div>
+            </Panel>
+          </Layout>
         );
     }
 }
 
-export default Home;
+function bindStateToProps(state) {
+  return {
+    quiz: state.quiz
+  }
+}
+
+function bindDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(QuizActions, dispatch)
+  }
+}
+
+export default connect(
+  bindStateToProps,
+  bindDispatchToProps
+)(Home);

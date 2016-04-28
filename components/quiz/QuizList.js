@@ -3,17 +3,20 @@ import { List, ListItem } from 'react-toolbox/list'
 import QuizListItem from './QuizListItem'
 
 export default class QuizList extends React.Component {
-  state = {
-    items: [
-      {title: 'List 1'},
-      {title: 'List 2'}
-    ]
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      quizList: this.props.data
+    }
   }
+
   render() {
+    console.log(this.state.quizList);
     return (
       <section>
         <List selectable ripple>
-          {this.state.items.map(quiz => (
+          {this.state.quizList.map(quiz => (
             <QuizListItem
             data={quiz}/>
           ))}

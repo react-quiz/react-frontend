@@ -10,7 +10,7 @@ export default class QuizListItem extends React.Component {
   render() {
     return (
       <ListItem
-      caption={this.state.title}
+      caption={this.state.get('title')}
       leftIcon='clear'/>
     );
   }

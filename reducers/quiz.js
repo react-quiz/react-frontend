@@ -1,12 +1,15 @@
-const initialState = [
-    {
-        title: "My first item",
-        id: 0
-    }
-];
+import {List, Map} from 'immutable';
+
+const initialState = List.of(
+  Map({
+      title: "My first item",
+      id: 0
+  })
+);
+
 export function quiz(state = initialState, action) {
-    switch (action.type) {
-        default:
-            return state;
-    }
+  switch (action.type) {
+    default:
+      return state;
+  }
 }
