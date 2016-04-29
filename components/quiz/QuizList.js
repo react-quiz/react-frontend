@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, ListItem } from 'react-toolbox/list'
+import { connect } from "react-redux";
 import QuizListItem from './QuizListItem'
 
 export default class QuizList extends React.Component {
@@ -7,21 +8,27 @@ export default class QuizList extends React.Component {
     super(props, context);
 
     this.state = {
-      quizList: this.props.data
+      quizList: this.props.quizList
     }
   }
 
   render() {
-    console.log(this.state.quizList);
     return (
       <section>
         <List selectable ripple>
           {this.state.quizList.map(quiz => (
-            <QuizListItem
-            data={quiz}/>
+            <QuizListItem key={quiz.get('id')}
+              data={quiz}/>
           ))}
         </List>
       </section>
     );
   }
 }
+
+function select(state) {
+  return {
+    quizList: state.allQuiz.data
+  }
+}
+export default connect(select)(QuizList);

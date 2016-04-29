@@ -25,6 +25,7 @@
     "classnames": "^2.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass": "^3.4.0",
     "normalize.css": "^4.1.1",
     "react": "^0.14.7",
@@ -35,6 +36,8 @@
     "react-router-redux": "^4.0.4",
     "react-toolbox": "^0.16.2",
     "redux": "^3.2.1",
+    "redux-api": "^0.9.3",
+    "redux-thunk": "^2.0.1",
     "sass-loader": "^2.0.1",
     "transfer-webpack-plugin": "^0.1.4"
   },
