@@ -63,7 +63,7 @@ class Home extends React.Component {
               <h1>List All Quiz</h1>
               <p>Main content goes here.</p>
               <QuizForm/>
-              <QuizList data={this.props.quiz}/>
+              <QuizList/>
             </div>
           </Panel>
         </Layout>

@@ -6,7 +6,6 @@ import QuizListItem from './QuizListItem'
 export default class QuizList extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.state = {
       quizList: this.props.quizList
     }
