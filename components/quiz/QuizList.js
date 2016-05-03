@@ -2,6 +2,10 @@ import React from 'react'
 import { List, ListItem } from 'react-toolbox/list'
 import { connect } from "react-redux";
 import QuizListItem from './QuizListItem'
+import Immutable from 'immutable'
+
+import reduxApi, {transformers} from "redux-api";
+import rest from '../../api/rest'
 
 export default class QuizList extends React.Component {
   constructor(props, context) {
@@ -15,8 +19,8 @@ export default class QuizList extends React.Component {
     return (
       <section>
         <List selectable ripple>
-          {this.state.quizList.map(quiz => (
-            <QuizListItem key={quiz.get('id')}
+          {this.state.quizList.toArray().map(quiz => (
+            <QuizListItem key={quiz.get('_id')}
               data={quiz}/>
           ))}
         </List>
@@ -26,8 +30,15 @@ export default class QuizList extends React.Component {
 }
 
 function select(state) {
-  return {
-    quizList: state.allQuiz.data
+  if (state.allQuiz.sync) {
+    let quizList = Immutable.List.of();
+    state.allQuiz.data.data.map(quiz => {
+      quizList = quizList.push(Immutable.Map(quiz))
+    });
+    return {
+      quizList: quizList
+    }
   }
 }
+
 export default connect(select)(QuizList);

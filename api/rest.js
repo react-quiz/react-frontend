@@ -13,15 +13,6 @@ export default reduxApi({
       header: {
         "Accept": "application/json"
       }
-    },
-    transformer(data) {
-      return map(data, (item)=> {
-        return Map({
-            title: item.title,
-            id: item._id
-        });
-      });
-
     }
   },
   apiQuiz: {
