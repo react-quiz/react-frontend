@@ -6,3 +6,10 @@ export function addQuiz(title) {
         title
     }
 }
+
+export function loadQuiz(quizList) {
+    return {
+        type: types.LOAD_QUIZ,
+        quizList
+    }
+}

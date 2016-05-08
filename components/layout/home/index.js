@@ -9,6 +9,7 @@ import { QuizForm, QuizList } from '../../quiz'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as QuizActions from '../../../actions/quiz-actions'
+import Immutable from 'immutable'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -63,7 +64,7 @@ class Home extends React.Component {
               <h1>List All Quiz</h1>
               <p>Main content goes here.</p>
               <QuizForm/>
-              <QuizList/>
+              <QuizList quiz={this.props.quiz} onLoad={this.props.actions.loadQuiz}/>
             </div>
           </Panel>
         </Layout>
@@ -72,8 +73,16 @@ class Home extends React.Component {
 }
 
 function bindStateToProps(state) {
-  return {
-    quiz: state.quiz
+  if (state.allQuiz.sync) {
+    let quizList = Immutable.List.of();
+    state.allQuiz.data.data.map(quiz => {
+      quizList = quizList.push(Immutable.Map(quiz))
+    });
+
+    return {
+      quizList: quizList,
+      quiz: state.quiz
+    }
   }
 }
 
