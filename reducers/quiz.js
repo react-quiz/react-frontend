@@ -1,12 +1,7 @@
 import {List, Map} from 'immutable';
 import * as types from '../constants/ActionTypes'
 
-const initialState = List.of(
-  Map({
-      title: "My first item 123",
-      id: 0
-  })
-);
+const initialState = List.of();
 
 export function quiz(state = initialState, action) {
   switch (action.type) {

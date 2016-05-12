@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from 'react-toolbox/input';
 import { Button } from 'react-toolbox/button';
-import { connect } from 'react-redux'
+import { connect, PromiseState } from 'react-refetch'
 import { bindActionCreators } from 'redux'
 import * as QuizActions from '../../actions/quiz-actions'
 
@@ -23,17 +23,17 @@ class QuizForm extends React.Component {
   };
 
   handleSubmit = (e) => {
-    this.props.post(null, {
-      body: JSON.stringify({
-        title: this.state.title
-      }),
-      headers: {
-        "Content-type": "application/json"
-      }
-    }, (err, data)=> {
-      console.log(err, data);
-    });
-
+    // this.props.post(null, {
+    //   body: JSON.stringify({
+    //     title: this.state.title
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json"
+    //   }
+    // }, (err, data)=> {
+    //   console.log(err, data);
+    // });
+    this.props.postQuiz(this.state.title);
   }
 
   render() {
@@ -49,7 +49,22 @@ class QuizForm extends React.Component {
 
 function select(state) {
   return {
-    quiz: state.quiz
+    postQuiz: title => ({
+      postQuizResponse: {
+        url: `${CONFIG.API_URL}/quiz`,
+        method: 'POST',
+        body: JSON.stringify({
+          title: title
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        then: function(quiz) {
+          console.log(quiz);
+        }
+      }
+    })
   }
 }
 
@@ -59,4 +74,20 @@ function bindDispatchToProps(dispatch) {
   }
 }
 
-export default connect(select, bindDispatchToProps)(QuizForm);
+const quizConnector = connect.defaults({
+  handleResponse: function (response) {
+    console.log(response);
+  },
+  buildRequest: function(mapping) {
+    const options = {
+      method: mapping.method,
+      headers: mapping.headers,
+      credentials: true,
+      body: mapping.body
+    }
+
+    return new Request(mapping.url, options)
+  }
+})
+
+export default quizConnector(select, bindDispatchToProps)(QuizForm);
