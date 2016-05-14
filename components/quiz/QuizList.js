@@ -16,7 +16,7 @@ export default class QuizList extends React.Component {
       quizList: this.props.quizList
     }
 
-    this.props.onLoad(this.props.quizList);
+    this.props.onLoad(this.props.quizList)
   }
 
   render() {
