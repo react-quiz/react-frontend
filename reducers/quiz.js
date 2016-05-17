@@ -12,6 +12,12 @@ export function quiz(state = initialState, action) {
         state = state.push(item);
       });
       return state;
+    case types.DELETE_QUIZ:
+      return state.filter(
+        item => {
+          return item.get('_id') !== action.id;
+        }
+      );
     default:
       return state;
   }

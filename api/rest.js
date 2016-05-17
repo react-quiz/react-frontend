@@ -16,7 +16,7 @@ export default reduxApi({
     }
   },
   apiQuiz: {
-    url: `${CONFIG.API_URL}/quiz`,
+    url: `${CONFIG.API_URL}/quiz/:id`,
     crud: true
   }
 }).use("fetch", adapterFetch(fetch)); // it's necessary to point using REST backend

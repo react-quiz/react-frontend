@@ -13,3 +13,10 @@ export function loadQuiz(quizList) {
         quizList
     }
 }
+
+export function deleteQuiz(id) {
+    return {
+        type: types.DELETE_QUIZ,
+        id
+    }
+}

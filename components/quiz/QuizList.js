@@ -13,7 +13,8 @@ export default class QuizList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      quizList: this.props.quizList
+      quizList: this.props.quizList,
+      quiz: this.props.quiz
     }
 
     this.props.onLoad(this.props.quizList)
