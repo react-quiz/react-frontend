@@ -32,15 +32,32 @@ class QuizForm extends React.Component {
       }
     }, (err, data) => {
       if (!err) {
-        console.log(this.props);
+        this.props.actions.addQuiz(data);
+
+        // clear form
+        this.setState({title: ''});
+      } else {
+        console.log(err);
       }
     });
+  }
+
+  handleKeyDown = (e) => {
+    if (e.which === 13) {
+      this.handleSubmit(e);
+    }
   }
 
   render() {
     return (
       <section>
-        <Input type='text' label='Quiz Title' name='title' value={this.state.title} onChange={this.handleChange.bind(this, 'title')} maxLength={64}/>
+        <Input type='text'
+          label='Quiz Title'
+          name='title'
+          onKeyDown={this.handleKeyDown.bind(this)}
+          value={this.state.title}
+          onChange={this.handleChange.bind(this, 'title')}
+          maxLength={64}/>
         <Button icon='add' label='Add this' flat primary onClick={this.handleSubmit.bind(this)}/>
       </section>
     );
@@ -56,7 +73,8 @@ function select(state) {
 
 function bindDispatchToProps(dispatch) {
   return {
-    post: bindActionCreators(rest.actions.apiQuiz.post, dispatch)
+    post: bindActionCreators(rest.actions.apiQuiz.post, dispatch),
+    actions: bindActionCreators(QuizActions, dispatch)
   }
 }
 

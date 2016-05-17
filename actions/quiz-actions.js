@@ -1,9 +1,9 @@
 import * as types from '../constants/ActionTypes'
 
-export function addQuiz(title) {
+export function addQuiz(quiz) {
     return {
-        type: types.ADD_QUIZ,
-        title
+      type: types.ADD_QUIZ,
+      quiz
     }
 }
 
