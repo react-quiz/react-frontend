@@ -1,7 +1,7 @@
 {
-  "name": "redux-todomvc-example",
-  "version": "0.0.0",
-  "description": "Redux TodoMVC example",
+  "name": "quiz-app",
+  "version": "0.0.1",
+  "description": "Quiz App",
   "scripts": {
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
