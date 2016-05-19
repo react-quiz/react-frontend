@@ -4,7 +4,7 @@
   "description": "Quiz App",
   "scripts": {
     "start": "node server.js",
-    "test": "cross-env NODE_ENV=test istanbul cover --dir ./coverage --report lcov node_modules/mocha/bin/_mocha -- --opts config/mocha.opts",
+    "test": "cross-env NODE_ENV=test istanbul cover --dir ./coverage --report lcov ./node_modules/mocha-webpack/bin/mocha-webpack -- --webpack-config webpack.config.test.js --opts config/mocha.opts",
     "test:watch": "npm test -- --watch",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
@@ -65,9 +65,11 @@
     "jsdom": "^5.6.1",
     "karma-coverage": "^1.0.0",
     "markdown-loader": "^0.1.7",
-    "mocha": "^2.2.5",
+    "mocha": "^2.4.5",
+    "mocha-webpack": "^0.3.1",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.4.2",
+    "path-alias": "0.0.7",
     "postcss-loader": "^0.8.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.7",
@@ -81,6 +83,7 @@
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.9.1"
+    "webpack-hot-middleware": "^2.9.1",
+    "webpack-node-externals": "^1.2.0"
   }
 }

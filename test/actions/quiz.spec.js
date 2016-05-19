@@ -16,7 +16,7 @@ describe('quiz actions', () => {
     })
   });
 
-  it('loadQuizQuiz should create LOAD_QUIZ action', () => {
+  it('loadQuiz should create LOAD_QUIZ action', () => {
     expect(actions.loadQuiz({
       id: 'xyz',
       title: 'Test Quiz'
@@ -27,5 +27,13 @@ describe('quiz actions', () => {
         title: 'Test Quiz'
       }
     })
-  })
+  });
+
+  it('deleteQuiz should create DELETE_QUIZ action', () => {
+    expect(actions.deleteQuiz('abc123feg')).toEqual({
+      type: types.DELETE_QUIZ,
+      id: 'abc123feg'
+    })
+  });
+
 })
