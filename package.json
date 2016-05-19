@@ -4,7 +4,7 @@
   "description": "Quiz App",
   "scripts": {
     "start": "node server.js",
-    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
+    "test": "cross-env NODE_ENV=test babel-node ./node_modules/istanbul/lib/cli cover --dir ./coverage --report lcov node_modules/mocha/bin/_mocha -- --opts config/mocha.opts",
     "test:watch": "npm test -- --watch",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
@@ -61,6 +61,7 @@
     "highlight.js": "^9.3.0",
     "html-loader": "^0.4.0",
     "html-webpack-plugin": "^2.15.0",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^5.6.1",
     "karma-coverage": "^1.0.0",
     "markdown-loader": "^0.1.7",

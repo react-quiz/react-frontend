@@ -14,5 +14,18 @@ describe('quiz actions', () => {
         title: 'Test Quiz'
       }
     })
+  });
+
+  it('loadQuizQuiz should create LOAD_QUIZ action', () => {
+    expect(actions.loadQuiz({
+      id: 'xyz',
+      title: 'Test Quiz'
+    })).toEqual({
+      type: types.LOAD_QUIZ,
+      quizList: {
+        id: 'xyz',
+        title: 'Test Quiz'
+      }
+    })
   })
 })
