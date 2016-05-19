@@ -4,7 +4,7 @@
   "description": "Quiz App",
   "scripts": {
     "start": "node server.js",
-    "test": "cross-env NODE_ENV=test babel-node ./node_modules/istanbul/lib/cli cover --dir ./coverage --report lcov node_modules/mocha/bin/_mocha -- --opts config/mocha.opts",
+    "test": "cross-env NODE_ENV=test istanbul cover --dir ./coverage --report lcov node_modules/mocha/bin/_mocha -- --opts config/mocha.opts",
     "test:watch": "npm test -- --watch",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
