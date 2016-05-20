@@ -3,11 +3,6 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import { QuizList } from '../../../components/quiz';
 
-var pathAlias = require('path-alias');
-
-//setup alias:
-pathAlias.setAlias('react-toolbox', path.resolve(__dirname, './../../../node_modules/react-toolbox/lib/'));
-
 //require module:
 
 function setup() {
