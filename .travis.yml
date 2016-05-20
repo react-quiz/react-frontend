@@ -4,6 +4,9 @@ node_js:
 before_install:
   - rm -rf node_modules
   - npm cache clean
+script:
+  - npm install
+  - npm test
 after_script:
   - bash <(curl -s https://codecov.io/bash)
   - npm run coveralls
