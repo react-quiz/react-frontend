@@ -4,7 +4,7 @@
   "description": "Quiz App",
   "scripts": {
     "start": "node server.js",
-    "test": "cross-env NODE_ENV=test istanbul cover --dir ./coverage --report lcov node_modules/mocha/bin/_mocha -- --opts config/mocha.opts",
+    "test": "cross-env NODE_ENV=test istanbul cover --dir ./coverage --report lcov ./node_modules/.bin/mocha-webpack -- --opts config/mocha-webpack.opts",
     "test:watch": "npm test -- --watch",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
@@ -26,8 +26,8 @@
     "classnames": "^2.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "immutable": "^3.8.1",
-    "isomorphic-fetch": "^2.2.1",
-    "node-sass": "^3.4.0",
+    "isomorphic-fetch": "git+https://github.com/matthew-andrews/isomorphic-fetch.git",
+    "node-sass": "^3.4.2",
     "normalize.css": "^4.1.1",
     "react": "^0.14.7",
     "react-addons-css-transition-group": "^0.14.8",
@@ -41,7 +41,8 @@
     "redux-api": "^0.9.3",
     "redux-thunk": "^2.0.1",
     "sass-loader": "^2.0.1",
-    "transfer-webpack-plugin": "^0.1.4"
+    "transfer-webpack-plugin": "^0.1.4",
+    "whatwg-fetch": "git+https://github.com/matthew-andrews/fetch.git"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
@@ -54,6 +55,7 @@
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "expect": "^1.8.0",
+    "exports-loader": "^0.6.3",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "gh-pages": "^0.11.0",
@@ -61,13 +63,18 @@
     "highlight.js": "^9.3.0",
     "html-loader": "^0.4.0",
     "html-webpack-plugin": "^2.15.0",
+    "imports-loader": "^0.6.5",
     "istanbul": "^1.0.0-alpha.2",
-    "jsdom": "^5.6.1",
+    "jsdom": "^9.1.0",
+    "json-loader": "^0.5.4",
     "karma-coverage": "^1.0.0",
     "markdown-loader": "^0.1.7",
-    "mocha": "^2.2.5",
+    "mocha": "^2.4.5",
+    "mocha-webpack": "^0.3.1",
+    "node-fetch": "^1.5.2",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.4.2",
+    "path-alias": "0.0.7",
     "postcss-loader": "^0.8.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.7",
@@ -81,6 +88,8 @@
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.9.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.9.1",
+    "webpack-node-externals": "^1.2.0"
   }
 }
