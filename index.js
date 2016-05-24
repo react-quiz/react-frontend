@@ -10,7 +10,6 @@ import routes from "./routes/routes";
 import thunk from "redux-thunk";
 import reduxApi from "./api/rest";
 import adapterFetch from "redux-api/lib/adapters/fetch";
-import "isomorphic-fetch";
 
 reduxApi.use("fetch", adapterFetch(fetch));
 const reducer = combineReducers({
