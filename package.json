@@ -27,7 +27,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
-    "node-sass": "^3.4.0",
+    "node-sass": "git+https://github.com/sass/node-sass.git#d19825ec0994f305a6d19f93e69ffcdd84c48b90",
     "normalize.css": "^4.1.1",
     "react": "^0.14.7",
     "react-addons-css-transition-group": "^0.14.8",
