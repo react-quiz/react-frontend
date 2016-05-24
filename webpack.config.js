@@ -49,6 +49,9 @@ module.exports = {
   },
   postcss: [autoprefixer],
   plugins: [
+    // new webpack.ProvidePlugin({
+    //   'fetch': 'imports?self=>global,this=>global!exports?global.fetch!isomorphic-fetch'
+    // }),
     new ExtractTextPlugin('docs.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

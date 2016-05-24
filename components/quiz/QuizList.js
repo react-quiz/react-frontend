@@ -22,7 +22,7 @@ export default class QuizList extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className='quiz-list'>
         <List selectable ripple>
           {this.props.quiz.toArray().map(quiz => (
             <QuizListItem key={quiz.get('_id')}
