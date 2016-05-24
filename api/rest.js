@@ -1,4 +1,3 @@
-import "isomorphic-fetch";
 import reduxApi, {transformers} from "redux-api";
 import adapterFetch from "redux-api/lib/adapters/fetch";
 import map from "lodash/map";

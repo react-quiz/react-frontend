@@ -54,7 +54,7 @@ module.exports = {
   postcss: [autoprefixer],
   plugins: [
     new webpack.ProvidePlugin({
-      'fetch': 'imports?self=>{},this=>global!exports?global.fetch!node-fetch'
+      'fetch': 'imports?self=>global,this=>global!exports?global.fetch!node-fetch'
     }),
     new ExtractTextPlugin('docs.css', { allChunks: true }),
     new webpack.DefinePlugin({
